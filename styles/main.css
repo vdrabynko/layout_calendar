@@ -1,5 +1,5 @@
 body {
-  margin: 30px;
+  margin: 0;
   font-family: Arial, sans-serif;
   font-size: 30px; }
 
@@ -10,7 +10,9 @@ body {
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   max-width: 707px;
-  margin: auto; }
+  position: relative;
+  margin: 0 auto;
+  top: 60px; }
   .calendar div {
     display: -webkit-box;
     display: -ms-flexbox;
