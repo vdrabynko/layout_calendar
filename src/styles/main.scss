@@ -1,3 +1,61 @@
+$day-in-week: ("mon", "tue", "wed", "thu", "fri", "sat", "sun");
+
 body {
   margin: 0;
+  font-family: Arial, sans-serif;
+  font-size: 30px;
+}
+
+.calendar {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: (100px + 1px) * 7;
+  margin: auto;
+
+  div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    width: 100px;
+    background-color: #eee;
+    box-sizing: border-box;
+    border: 1px solid black;
+    margin: 0 0 1px 1px;
+    transition: transform 0.5s, background-color 0.5s;
+
+    &:hover {
+      background-color: pink;
+      cursor: pointer;
+      transform: translateY(-20px);
+    }
+  }
+}
+
+$day: 1;
+@each $item in $day-in-week {
+  .calendar-#{$item} {
+    div:first-child {
+      margin-left: (100px + 1px) * ($day - 1);
+    }
+  }
+  $day: $day + 1;
+}
+
+@for $i from 1 through 31 {
+  .calendar {
+    div:nth-child(#{$i}) {
+      &::after {
+        content: "#{$i}";
+      }
+    }
+  }
+}
+
+@for $xday from 28 through 30 {
+  .calendar-#{$xday} {
+    div:nth-child(#{$xday}) ~ div {
+      display: none;
+    }
+  }
 }
